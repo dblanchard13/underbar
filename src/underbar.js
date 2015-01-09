@@ -169,7 +169,7 @@
   _.reduce = function(collection, iterator, accumulator) {
     if(accumulator === undefined){
         accumulator = collection[0]
-        collection = collection.slice(1, (collection.length+2))
+        collection = collection.slice(1, (collection.length))
       } 
     _.each(collection, function(item){
       accumulator = iterator(accumulator, item)
