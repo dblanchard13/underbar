@@ -314,6 +314,13 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var memoize = function(key) {
+      var seen = memoize.seen;
+      if (!seen.hasOwnProperty(key)) seen[key] = func.apply(this, arguments);
+      return seen[key];
+    };
+    memoize.seen = {};
+    return memoize;
    
   };
 
