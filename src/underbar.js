@@ -102,19 +102,20 @@
     return falses;
   };
 
-  // Produce a duplicate-free version of the array.
-  _.uniq = function(array) {
-     var seen = []
-      var results = []
-    _.each(array, function(item, index){
-      if (seen.indexOf(item)===-1){
-        results.push(item)
+  _.uniq = function(array){
+    var obj = {};
+    var results = [];
+
+    _.each(array, function(value, index){
+      if(obj[value]){
+        return;
+      } else {
+        obj[value] = true;
+        results.push(value);
       }
-      seen.push(item)
     })
     return results;
-  };
-
+  }
 
   // Return the results of applying an iterator to each element.
   _.map = function(collection, iterator) {
